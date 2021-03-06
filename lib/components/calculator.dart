@@ -47,29 +47,26 @@ class CalculatorLayout extends StatelessWidget {
     final calculator = Provider.of<Calculator>(context, listen: false);
 
     final Color highlightColor = isDarkTheme(context)
-        ? Colors.white.withOpacity(.075)
-        : Colors.black.withOpacity(.075);
+        ? Colors.white.withOpacity(.0375)
+        : Colors.black.withOpacity(.0375);
 
-    return List.generate(operations.length, (index) {
-      final operation = operations[index];
-      final callback = operation != ""
-          ? () {
-              handle(calculator, operation);
-            }
-          : null;
+    return List.generate(
+      operations.length,
+      (index) {
+        final operation = operations[index];
+        final callback = operation != ""
+            ? () {
+                handle(calculator, operation);
+              }
+            : () {};
 
-      return NikuFlatButton(
-        NikuText(
-          operations[index],
-        ).fontSize(24).color(Colors.grey).build(),
-      )
-          .onPressed(callback)
-          .splash(Colors.transparent)
-          .highlight(highlightColor)
-          .rounded(8)
-          .niku()
-          .build();
-    });
+        return NikuButton(
+          NikuText(
+            operations[index],
+          ).fontSize(24).color(Colors.grey).build(),
+        ).onPressed(callback).splash(highlightColor).rounded(8).niku().build();
+      },
+    );
   }
 
   static void handle(Calculator calculator, String option) {

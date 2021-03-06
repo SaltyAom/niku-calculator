@@ -84,7 +84,7 @@ class Calculator extends ChangeNotifier {
   }
 
   String operate() {
-    double calculated;
+    double calculated = 0;
 
     if (_mathOperation == "+")
       calculated = double.parse(_firstValue) + double.parse(_secondValue);

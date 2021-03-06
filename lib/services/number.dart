@@ -1,7 +1,5 @@
 bool isNumeric(String s) {
-  if (s == null) return false;
-
-  return double.parse(s, (e) => null) != null;
+  return double.tryParse(s) != null;
 }
 
 String formatComma(String input) {
@@ -23,7 +21,9 @@ String formatComma(String input) {
   }
 
   if (numberLength > 3)
-    for (int commaPosition = (numberLength % 3).toInt(); commaPosition + i <= numberLength; commaPosition += 3) {
+    for (int commaPosition = (numberLength % 3).toInt();
+        commaPosition + i <= numberLength;
+        commaPosition += 3) {
       if (commaPosition == 0) continue;
 
       parsed.insert(commaPosition + i, ",");

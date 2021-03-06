@@ -1,4 +1,3 @@
-import 'package:Calculator/components/calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +7,8 @@ import 'package:provider/provider.dart';
 import 'package:niku/niku.dart';
 
 import './models/calculator.dart';
+
+import './components/calculator.dart';
 
 import './services/number.dart';
 
@@ -50,7 +51,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  HomePage({Key key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   @override
   build(context) {
