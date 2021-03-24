@@ -41,7 +41,9 @@ class CalculatorLayout extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         crossAxisCount: 4,
         children: calculatorBuilder(context, operations),
-      ).niku().fullWidth().aspectRatio(4 / 5).build();
+      ).niku()
+        ..fullWidth()
+        ..aspectRatio(4 / 5);
 
   static List<Widget> calculatorBuilder(context, List<String> operations) {
     final calculator = Provider.of<Calculator>(context, listen: false);
@@ -60,11 +62,16 @@ class CalculatorLayout extends StatelessWidget {
               }
             : () {};
 
-        return NikuButton(
-          NikuText(
+        return TextButton(
+          child: Text(
             operations[index],
-          ).fontSize(24).color(Colors.grey).build(),
-        ).onPressed(callback).splash(highlightColor).rounded(8).niku().build();
+          ).asNiku()
+            ..fontSize(24)
+            ..color(Colors.grey),
+          onPressed: callback,
+        ).asNiku()
+          ..splash(highlightColor)
+          ..rounded(8);
       },
     );
   }

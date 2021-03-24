@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  niku: 0.5.0
+  niku: 1.0.0-alpha.0
   provider: 5.0.0
 
 dev_dependencies:

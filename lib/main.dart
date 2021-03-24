@@ -30,7 +30,7 @@ class App extends StatelessWidget {
     final Color darkTheme = Color.fromRGBO(250, 250, 250, 1);
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Niku Calculator',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -60,26 +60,28 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: NikuColumn([
-          NikuText(calculator.mathOperation)
-              .color(Colors.blue)
-              .fontSize(28)
-              .bold()
-              .right()
-              .niku()
-              .mr(20)
-              .build(),
-          NikuText(formatComma(calculator.value))
+          Text(calculator.mathOperation).asNiku()
+            ..color(Colors.blue)
+            ..fontSize(28)
+            ..bold()
+            ..right()
+            ..mr(20),
+          Text(formatComma(calculator.value))
+              .asNiku()
               .fontSize(60)
               .right()
               .maxLines(2)
               .overflow(TextOverflow.ellipsis)
               .niku()
-              .p(20)
-              .on(tap: () {
-            calculator.decrease();
-          }).build(),
+                ..p(20)
+                ..on(tap: () {
+                  calculator.decrease();
+                }),
           CalculatorLayout()
-        ]).justifyEnd().stretch().niku().mb(20).build(),
+        ])
+          ..justifyEnd()
+          ..stretch()
+          ..mb(20),
       ),
     );
   }
